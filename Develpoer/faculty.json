@@ -1,0 +1,20 @@
+[
+
+    {
+        "id": 1,
+        "name": "Dr. Ravi Kumar",
+        "dept": "CSE"
+     
+    },
+    {
+        "id": 2,
+        "name": "Dr. Priya Sharma",
+        "dept": "ECE"
+     
+    },
+    {
+        "id": 3,
+        "name": "Prof. Suresh",
+        "dept": "CSE"
+    }
+] 
