@@ -93,3 +93,8 @@ app.delete("/api/v1/faculty/:id", (req, res) => {
 app.listen(8080, () => {
     console.log("Server is running on port 8080");
 });
+//curl -X POST http://localhost:8080/api/v1/faculty -H "Content-Type: application/json" -d '{"name": "John Doe", "dept": "Computer Science","salary": 50000}{'message': 'Faculty created successfully', 'data': {'id': 1, 'name': 'John Doe', 'dept': 'Computer Science', 'salary': 50000}}
+//curl -X GET http://localhost:8080/api/v1/faculty{'message': 'Faculty retrieved successfully', 'data': [{'id': 1, 'name': 'John Doe', 'dept': 'Computer Science', 'salary': 50000}
+//curl -X GET http://localhost:8080/api/v1/faculty?dept=Computer%20Science{'message': 'Faculty retrieved successfully', 'data': [{'id': 1, 'name': 'John Doe', 'dept': 'Computer Science', 'salary': 50000}
+//curl -X PUT http://localhost:8080/api/v1/faculty/1 -H "Content-Type: application/json" -d '{"salary": 60000}'{'message': 'Faculty updated successfully', 'data': {'id': 1, 'name': 'John Doe', 'dept': 'Computer Science', 'salary': 60000}}
+//curl -X DELETE http://localhost:8080/api/v1/faculty/1{'message': 'Faculty deleted successfully', 'data': {'id': 1, 'name': 'John Doe', 'dept': 'Computer Science', 'salary': 60000}}
