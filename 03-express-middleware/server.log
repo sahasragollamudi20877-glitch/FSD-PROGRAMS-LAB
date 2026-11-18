@@ -1,0 +1,2 @@
+GET /api/v1/patients 200 1ms
+GET /api/v1/patients/1 200 1ms
