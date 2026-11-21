@@ -1,107 +1,122 @@
-import "./App.css";
-import { useState } from "react";
-//useState is a React hook that allows you to add state to functional components.
-//useEffect is a React hook that allows you to perform side effects in functional components.
-//useContext is a React hook that allows you to access the context value in functional components.
-//useRef is a React hook that allows you to create a mutable reference that persists across renders.
+import { useState } from 'react'
+import heroImg from './assets/hero.png'
+import reactLogo from './assets/react.svg'
+import viteLogo from './assets/vite.svg'
+import './App.css'
 
 function App() {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
-  const [branch, setBranch] = useState("");
-  const [gender, setGender] = useState("");
-
-  const handleBranchChange = (e) => {
-    setBranch(e.target.value);
-  };
-
-  const handleGenderChange = (e) => {
-    setGender(e.target.value);
-  };
-
-  const handleChange = (e) => {
-    setName(e.target.value);
-  };
-
-  const handleAgeChange = (e) => {
-    setAge(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(`Name: ${name}, Age: ${age}, Branch: ${branch}, Gender: ${gender}`);
-  };
-
-  const handleClear = () => {
-    setName("");
-    setAge("");
-    setBranch("");
-    setGender("");
-  };
+  const [count, setCount] = useState(0)
 
   return (
-    <div className="App">
-      <h1 className="title">Student Form</h1>
-      <form className="form" onSubmit={handleSubmit}>
-        <label>
-          Name:
-          <input type="text" name="name" value={name} onChange={handleChange} />
-        </label>
-        <br />
-        <label>
-          Age:
-          <input
-            type="number"
-            name="age"
-            value={age}
-            onChange={handleAgeChange}
-          />
-        </label>
-        <div className="gender-group">
-          <label>
-            Gender:
-            <input
-              type="radio"
-              name="gender"
-              value="male"
-              onChange={handleGenderChange}
-            />
-          </label>
-          <label>
-            Female:
-            <input
-              type="radio"
-              name="gender"
-              value="female"
-              onChange={handleGenderChange}
-            />
-          </label>
+    <>
+      <section id="center">
+        <div className="hero">
+          <img src={heroImg} className="base" width="170" height="179" alt="" />
+          <img src={reactLogo} className="framework" alt="React logo" />
+          <img src={viteLogo} className="vite" alt="Vite logo" />
         </div>
-        <label>
-          Branch:
-          <select
-            name="branch"
-            value={branch}
-            onChange={handleBranchChange}
-          >
-            <option value="">Select branch</option>
-            <option value="cse">CSE</option>
-            <option value="ece">ECE</option>
-            <option value="mech">MECH</option>
-          </select>
-        </label>
-        <br />
-        <div className="button-group">
-          <button className="submit-button" type="submit">
-            Submit
-          </button>
-          <button className="reset-button" type="button" onClick={handleClear}>
-            Clear
-          </button>
+        <div>
+          <h1>Get started</h1>
+          <p>
+            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+          </p>
         </div>
-      </form>
-    </div>
-  );
+        <button
+          type="button"
+          className="counter"
+          onClick={() => setCount((count) => count + 1)}
+        >
+          Count is {count}
+        </button>
+      </section>
+
+      <div className="ticks"></div>
+
+      <section id="next-steps">
+        <div id="docs">
+          <svg className="icon" role="presentation" aria-hidden="true">
+            <use href="/icons.svg#documentation-icon"></use>
+          </svg>
+          <h2>Documentation</h2>
+          <p>Your questions, answered</p>
+          <ul>
+            <li>
+              <a href="https://vite.dev/" target="_blank">
+                <img className="logo" src={viteLogo} alt="" />
+                Explore Vite
+              </a>
+            </li>
+            <li>
+              <a href="https://react.dev/" target="_blank">
+                <img className="button-icon" src={reactLogo} alt="" />
+                Learn more
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div id="social">
+          <svg className="icon" role="presentation" aria-hidden="true">
+            <use href="/icons.svg#social-icon"></use>
+          </svg>
+          <h2>Connect with us</h2>
+          <p>Join the Vite community</p>
+          <ul>
+            <li>
+              <a href="https://github.com/vitejs/vite" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#github-icon"></use>
+                </svg>
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a href="https://chat.vite.dev/" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#discord-icon"></use>
+                </svg>
+                Discord
+              </a>
+            </li>
+            <li>
+              <a href="https://x.com/vite_js" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#x-icon"></use>
+                </svg>
+                X.com
+              </a>
+            </li>
+            <li>
+              <a href="https://bsky.app/profile/vite.dev" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#bluesky-icon"></use>
+                </svg>
+                Bluesky
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <div className="ticks"></div>
+      <section id="spacer"></section>
+    </>
+  )
 }
 
-export default App;
+export default App
