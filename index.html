@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FSD Programs Lab</title>
+<style>
+:root{--bg:#0b1020;--panel:#141c31;--muted:#9ba9c4;--text:#f4f7ff;--line:#293653;--accent:#79a8ff;--green:#62d6ad}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 12% 0%,#1d3158 0,transparent 32%),var(--bg);color:var(--text);font:16px/1.5 Inter,system-ui,Segoe UI,Arial,sans-serif}.wrap{max-width:1160px;margin:auto;padding:42px 22px 70px}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}.brand{font-weight:800;letter-spacing:.08em;font-size:13px;color:var(--accent)}h1{font-size:clamp(34px,6vw,58px);line-height:1.04;margin:18px 0 12px}.lead{color:var(--muted);max-width:700px;margin:0}.stats{display:flex;gap:10px;flex-wrap:wrap;margin:25px 0 32px}.pill{border:1px solid var(--line);border-radius:99px;padding:7px 12px;color:#c8d5ed;font-size:13px}.toolbar{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0}.toolbar input,.toolbar select{background:#111a2d;border:1px solid var(--line);color:var(--text);padding:12px 14px;border-radius:12px;font:inherit}.toolbar input{flex:1;min-width:220px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:16px}.card{background:linear-gradient(145deg,#18233b,#111a2c);border:1px solid var(--line);border-radius:17px;padding:19px;display:flex;flex-direction:column;min-height:190px;transition:.18s}.card:hover{transform:translateY(-3px);border-color:#668fd8}.num{font-size:12px;color:var(--accent);font-weight:800;letter-spacing:.12em}.card h2{font-size:18px;margin:9px 0 7px}.desc{color:var(--muted);font-size:13px;flex:1}.tag{font-size:11px;color:#a8e8d1;background:#16372f;border-radius:99px;padding:4px 9px;display:inline-block;margin:10px 0;width:max-content}.actions{display:flex;gap:9px;margin-top:9px}.btn{display:inline-block;text-decoration:none;padding:9px 12px;border-radius:10px;font-size:13px;font-weight:700}.primary{background:var(--accent);color:#081226}.secondary{border:1px solid var(--line);color:#dce7fb}.foot{color:var(--muted);font-size:12px;margin-top:30px;border-top:1px solid var(--line);padding-top:18px}.empty{display:none;color:var(--muted);padding:24px;text-align:center}
+</style></head>
+<body><main class="wrap"><div class="top"><div class="brand">FSD • LEARNING PORTFOLIO</div><a class="btn secondary" href="https://github.com/sahasragollamudi20877-glitch/FSD-PROGRAMS-LAB" target="_blank" rel="noreferrer">View GitHub ↗</a></div>
+<h1>FSD Programs<br><span style="color:var(--accent)">Lab.</span></h1><p class="lead">A single place to explore the Full Stack Development lab work — from Express and databases to React and MERN. Choose a program to view its source code.</p>
+<div class="stats"><span class="pill">19 numbered programs</span><span class="pill">Express • MongoDB • React • MERN</span><span class="pill">Source code on GitHub</span></div>
+<div class="toolbar"><input id="search" placeholder="Search programs…" aria-label="Search programs"><select id="filter" aria-label="Filter category"><option value="all">All categories</option><option value="backend">Backend</option><option value="database">Database</option><option value="react">React</option><option value="fullstack">Full stack</option></select></div>
+<section class="grid" id="grid"></section><div class="empty" id="empty">No matching programs. Try another search.</div>
+<div class="foot">FSD Programs Lab · Built as a portfolio hub. Backend/database demos may require environment variables and a running database before they can be hosted as live applications.</div></main>
+<script>
+const repo='https://github.com/sahasragollamudi20877-glitch/FSD-PROGRAMS-LAB/tree/main/';
+const items=[
+['01','Express Application','A basic server and route handling with Express.','backend','01-express-application'],
+['02','Persistent Express API','An Express API with persistent data storage.','backend','02-persistent-express-api'],
+['03','Express Middleware','Middleware, request processing and API utilities.','backend','03-express-middleware'],
+['04','MongoDB','MongoDB database practice and related files.','database','04-mongodb'],
+['05','Express + MongoDB','Connecting an Express application to MongoDB.','database','05-express-mongodb'],
+['06','Mongoose','MongoDB models and schemas using Mongoose.','database','06-mongoose'],
+['07','MVC Express','Model–View–Controller structure with Express.','backend','07-MVC-Express/7-mvp-express'],
+['08','MVC Authentication','Authentication workflow in an MVC application.','backend','08-MVC-Authentication'],
+['09','EJS Template','Server-side pages rendered with EJS templates.','backend','09-EJS-Template'],
+['10','React HTML Render','Rendering HTML content with React.','react','10-React-HTML-Render'],
+['11','React JSX','JSX syntax and React component rendering.','react','11-React-JSX'],
+['12','React Nested Components','Building interfaces with nested components.','react','12-React-Nested-Components'],
+['13','React State Events','React state and event handling.','react','13-React-State-Events'],
+['14','React Forms Events','Handling forms and user input in React.','react','14-React-Forms-Events'],
+['15','React Conditional Rendering','Displaying UI based on application conditions.','react','15-React-Conditional-Rendering'],
+['16','React Lists','Rendering lists and collections in React.','react','16-React-Lists'],
+['17','React Frontend CRUD','Frontend create, read, update and delete operations.','react','17-React-Frontend-CRUD'],
+['18','React Router','Client-side navigation with React Router.','react','18-React-Router'],
+['19','MERN Fullstack','A full-stack MongoDB, Express, React and Node application.','fullstack','19-MERN-Fullstack']
+];
+const grid=document.getElementById('grid'),search=document.getElementById('search'),filter=document.getElementById('filter'),empty=document.getElementById('empty');
+function render(){let q=search.value.toLowerCase(),f=filter.value;let shown=0;grid.innerHTML='';items.filter(x=>(f==='all'||x[3]===f)&&(x[1]+' '+x[2]+' '+x[0]).toLowerCase().includes(q)).forEach(x=>{shown++;let c=document.createElement('article');c.className='card';c.innerHTML=`<div class="num">PROGRAM ${x[0]}</div><h2>${x[1]}</h2><p class="desc">${x[2]}</p><span class="tag">${x[3].toUpperCase()}</span><div class="actions"><a class="btn primary" href="${repo+x[4]}" target="_blank" rel="noreferrer">View source ↗</a></div>`;grid.appendChild(c)});empty.style.display=shown?'none':'block'}search.addEventListener('input',render);filter.addEventListener('change',render);render();
+</script></body></html>
