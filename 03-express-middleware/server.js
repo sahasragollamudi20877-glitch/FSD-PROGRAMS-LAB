@@ -3,7 +3,6 @@ import morgan from "morgan";
 import fs from "fs";
 import cors from "cors";
 const app = express();
-const PORT = 6500;
 app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
@@ -13,11 +12,7 @@ const logger=(req,res,next)=>{
     res.on("finish",()=>{
         const duration = Date.now() - start;
         const log = `${req.method} ${req.originalUrl} ${res.statusCode} ${duration}ms\n`;
-        fs.appendFile("server.log", log, (err)=>{
-            if(err){
-                console.error("Error writing to log file", err);
-            }
-        });
+        console.log(log);;
     });
     next();
 };
@@ -69,6 +64,4 @@ app.use((err, req, res, next) => {
 app.use((req, res, next) => {
     res.status(404).json({ error: "Not Found" });
 });
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+export default app;
