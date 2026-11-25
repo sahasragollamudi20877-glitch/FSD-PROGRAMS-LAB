@@ -43,9 +43,7 @@ app.delete("/products/:id", (req, res) => {
 });
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+export default app;
 //curl -X POST http://localhost:3000/products -H "Content-Type: application/json" -d '{"id":1,"name":"Product 1","price":100}'{"message":"Product created successfully","data":{"id":1,"name":"Product 1","price":100}}
 //curl -X GET http://localhost:3000/products{"message":"Products retrieved successfully","data":[{"id":1,"name":"Product 1","price":100}]}
 //curl -X GET http://localhost:3000/products/1{"message":"Product retrieved successfully","data":{"id":1,"name":"Product 1","price":100}}
